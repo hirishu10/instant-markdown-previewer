@@ -140,7 +140,12 @@ function Navbar({ darkMode, darkModeEnabled }) {
           </button>
           {/*  */}
         </div>
-        <div className="navbarContainerZeroSecond">Gihub Version</div>
+        <div className="navbarContainerZeroSecond">
+          <img
+            alt="GitHub package.json version"
+            src="https://img.shields.io/github/package-json/v/hirishu10/instant-markdown-previewer?color=%23333&label=Github&logo=github&style=for-the-badge"
+          />
+        </div>
       </div>
       <div className="navbarContainerOne">
         {/* in the heart i may add animation for looking good */}

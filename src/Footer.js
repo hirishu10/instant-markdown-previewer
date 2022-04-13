@@ -67,6 +67,7 @@ function Footer() {
             <div className="socialIconContainerOne">
               {socialIcons.map((item, index) => (
                 <a
+                  key={index}
                   className="socialIcons"
                   href={item?.href}
                   target={"_blank"}
@@ -93,7 +94,9 @@ function Footer() {
               <p>
                 {`Please help us to improve `}
                 <a
-                  href={"#github"}
+                  href={
+                    "https://github.com/hirishu10/instant-markdown-previewer"
+                  }
                   target={"_blank"}
                   rel="noreferrer"
                   onMouseEnter={(e) => {
