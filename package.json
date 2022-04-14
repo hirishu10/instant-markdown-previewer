@@ -1,6 +1,6 @@
 {
   "name": "instant-markdown-previewer",
-  "version": "1.0.0",
+  "version": "1.0.3-Beta",
   "description": "",
   "main": "server.js",
   "engines": {

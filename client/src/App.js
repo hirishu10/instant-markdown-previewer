@@ -7,7 +7,13 @@ import { useState } from "react";
 import { marked } from "marked";
 //
 // get our fontawesome imports
-import { faExpandAlt, faExpand } from "@fortawesome/free-solid-svg-icons";
+import {
+  faExpandAlt,
+  faExpand,
+  faTrashCan,
+  faDownload,
+  faFileDownload,
+} from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faTumblr } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
@@ -17,17 +23,9 @@ import $ from "jquery";
 // import "animate.css";
 import hljs from "highlight.js";
 // import "highlight.js/styles/github.css";
-import "highlight.js/styles/vs.css";
 // import "highlight.js/styles/googlecode.css";
-// import "highlight.js/styles/github-dark.css";
-// import "highlight.js/styles/vs2015.css";
-// import "highlight.js/styles/base16/nord.css";
+import "highlight.js/styles/github-dark.css";
 // import "highlight.js/styles/base16/darcula.css";
-// import "highlight.js/styles/base16/3024.css";
-
-//
-// import "highlight.js/styles/googlecode.css";
-// import "highlight.js/styles/vs2015.css";
 
 // import Prism from "prismjs";
 // import "prismjs/themes/vs.css";
@@ -38,62 +36,17 @@ import {
   setVersionMode,
   updateVersionInMarkdown,
 } from "./redux/actions/index";
-
+//
+import fileDownload from "js-file-download";
+//
 function App() {
   const dispatch = useDispatch();
   const { isDarkMode, isVersionViewMode, versionUpdateViewer } = useSelector(
     (state) => state.actionCombined
   );
 
-  const [darkMode, setDarkMode] = useState(false);
   const [editorBox, setEditiorBox] = useState(false);
   const [previewerBox, setPreviewerBox] = useState(false);
-
-  // some states to take the data from the textarea
-  //   const predefinedData = `
-  // ![https://github.com/hirishu10](https://raw.githubusercontent.com/hirishu10/my-assets/main/rishuchowdharyanimate.gif)
-  // # Welcome to my React Markdown Previewer!
-  // ## This is a sub-heading...
-  // ### And here's some other cool stuff:
-
-  // Heres some code, \`<div></div>\`, between 2 backticks.
-
-  // \`\`\`java
-  // // this is multi-line code:
-
-  // function anotherExample(firstLine, lastLine) {
-  //   if (firstLine == '\`\`\`' && lastLine == '\`\`\`') {
-  //     return multiLineCode;
-  //   }
-  // }
-  // \`\`\`
-
-  // You can also make text **bold**... whoa!
-  // Or _italic_.
-  // Or... wait for it... **_both!_**
-  // And feel free to go crazy ~~crossing stuff out~~.
-
-  // There's also [links](https://www.freecodecamp.org), and
-  // > Block Quotes!
-
-  // And if you want to get really crazy, even tables:
-
-  // Wild Header | Crazy Header | Another Header?
-  // ------------ | ------------- | -------------
-  // Your content can | be here, and it | can be here....
-  // And here. | Okay. | I think we get it.
-
-  // - And of course there are lists.
-  // - Some are bulleted.
-  // - With different indentation levels.
-  // - That look like this.
-
-  // 1. And there are numbered lists too.
-  // 1. Use just 1s if you want!
-  // 1. And last but not least, let's not forget embedded images:
-
-  // ![https://github.com/hirishu10](https://raw.githubusercontent.com/hirishu10/my-assets/main/Rishu%20Chowdhary%20(1).gif)
-  // `;
 
   const predefinedData = versionUpdateViewer;
   const [editorData, setEditorData] = useState(predefinedData);
@@ -110,11 +63,6 @@ function App() {
     setPreviewerBox(!previewerBox);
   };
 
-  // This function helpful for enabling the dark mode
-  const darkModeEnabled = (e) => {
-    e.preventDefault();
-    setDarkMode(!darkMode);
-  };
   //
   // marked.setOptions({
   //   breaks: true,
@@ -144,6 +92,18 @@ function App() {
     smartypants: false,
     xhtml: false,
   });
+
+  // Color and Background Color
+  const BACKGROUND_COLOR = isDarkMode ? "#0c1118" : "white";
+  const COLOR = isDarkMode ? "#c8d1da" : "#232930";
+  const LANGUAGE_BACKGROUND_COLOR = isDarkMode ? "#151b23" : "#333943";
+  const P_CODE_BACKGROUND_COLOR = isDarkMode ? "#333943" : "#e8ebef";
+  $("pre").css("background-color", LANGUAGE_BACKGROUND_COLOR);
+  // $("pre code").css("background-color", LANGUAGE_BACKGROUND_COLOR);
+
+  $("p code").css("background-color", P_CODE_BACKGROUND_COLOR);
+
+  //
   useEffect(() => {
     // console.log("isVersionViewMode :>> ", isVersionViewMode);
     // console.log("versionUpdateViewer :>> ", versionUpdateViewer);
@@ -153,12 +113,21 @@ function App() {
     // const markdownData = marked.parse(versionUpdateViewer);
     // $(".language-java").addClass("hljs language-java");
     document.getElementById("preview").innerHTML = markdownData;
-  }, [editorData, isVersionViewMode, versionUpdateViewer]);
+    $("pre").css("background-color", LANGUAGE_BACKGROUND_COLOR);
+    // $("pre code").css("background-color", LANGUAGE_BACKGROUND_COLOR);
 
+    $("p code").css("background-color", P_CODE_BACKGROUND_COLOR);
+  }, [
+    LANGUAGE_BACKGROUND_COLOR,
+    P_CODE_BACKGROUND_COLOR,
+    editorData,
+    isVersionViewMode,
+    versionUpdateViewer,
+  ]);
   //
   return (
     <div className="App">
-      <Navbar darkMode={darkMode} darkModeEnabled={darkModeEnabled} />
+      <Navbar />
       <div className="mainContainer">
         <div
           className="mainContainerOne"
@@ -167,11 +136,88 @@ function App() {
             width: editorBox ? "100%" : "50%",
             height: "100%",
             // backgroundColor: "orange",
-            borderRight: "1px solid silver",
+            // borderRight: "1px solid silver",
           }}
         >
           <div className="sameForBoth">
-            <div className="sameForBothOne">#Editor</div>
+            {/* <div className="sameForBothOne"></div> */}
+            <div className="sameForBothOne">
+              <div className="sameForBothOneFirst">#Editor</div>
+              <div className="sameForBothOneSecond">
+                <div
+                  className="sameForBothOneSecondButtonContainer"
+                  onMouseEnter={(e) => {
+                    e.preventDefault();
+                    $("#trashICon").addClass(
+                      "animate__animated animate__heartBeat"
+                    );
+                  }}
+                  onMouseLeave={(e) => {
+                    e.preventDefault();
+                    $("#trashICon").removeClass(
+                      "animate__animated animate__heartBeat"
+                    );
+                  }}
+                >
+                  <button
+                    className="sameForBothOneSecondButton"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setEditorData("");
+                    }}
+                  >
+                    Clear{" "}
+                    <FontAwesomeIcon
+                      id="trashICon"
+                      className="sameForBothTwoButtonChild"
+                      icon={faTrashCan}
+                      size={"sm"}
+                      // color={"white"}
+                    />
+                  </button>
+                </div>
+              </div>
+              <div className="sameForBothOneThird">
+                <div
+                  className="sameForBothOneThirdButtonContainer"
+                  onMouseEnter={(e) => {
+                    e.preventDefault();
+                    $("#fileDownload").addClass(
+                      "animate__animated animate__heartBeat"
+                    );
+                  }}
+                  onMouseLeave={(e) => {
+                    e.preventDefault();
+                    $("#fileDownload").removeClass(
+                      "animate__animated animate__heartBeat"
+                    );
+                  }}
+                >
+                  <button
+                    className="sameForBothOneThirdButton"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (editorData !== "") {
+                        fileDownload(editorData, "markedraw.txt");
+                      } else {
+                        alert(
+                          "Please type some text in the editor to download the same."
+                        );
+                      }
+                    }}
+                  >
+                    Download File{" "}
+                    <FontAwesomeIcon
+                      id="fileDownload"
+                      className="sameForBothTwoButtonChild"
+                      icon={faFileDownload}
+                      size={"sm"}
+                      // color={"white"}
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
             <div className="sameForBothTwo">
               <button
                 onClick={editorFullScreen}
@@ -200,9 +246,10 @@ function App() {
               className="textArea"
               id="editor"
               style={{
-                minWidth: editorBox ? "98%" : "97%",
+                borderRadius: editorBox ? 5 : null,
+                minWidth: editorBox ? "80%" : "97%",
                 minHeight: editorBox ? "96%" : "96.5%",
-                maxWidth: editorBox ? "98%" : "97%",
+                maxWidth: editorBox ? "80%" : "97%",
                 maxHeight: editorBox ? "96%" : "96.5%",
                 overflowX: "hidden",
                 overflowY: "scroll",
@@ -212,7 +259,9 @@ function App() {
                 // display: "flex",
                 // justifyContent: "center",
                 // alignItems: "flex-end",
-                backgroundColor: "white",
+                backgroundColor: BACKGROUND_COLOR,
+                color: COLOR,
+
                 border: "none",
               }}
               value={editorData}
@@ -240,6 +289,7 @@ function App() {
             width: previewerBox ? "100%" : "50%",
             height: "100%",
             // backgroundColor: "orangered",
+            borderLeft: "1px solid silver",
           }}
         >
           <div className="sameForBoth">
@@ -272,16 +322,18 @@ function App() {
               className="textArea"
               id="preview"
               style={{
-                minWidth: previewerBox ? "95%" : "97%",
+                minWidth: previewerBox ? "80%" : "97%",
                 minHeight: previewerBox ? "96%" : "96.5%",
-                maxWidth: previewerBox ? "95%" : "97%",
+                maxWidth: previewerBox ? "80%" : "97%",
                 maxHeight: previewerBox ? "96%" : "96.5%",
                 overflowX: "hidden",
                 overflowY: "scroll",
                 // padding: 10,
                 wordBreak: "break-word",
                 border: "none",
-                backgroundColor: "white",
+                // backgroundColor: "white",
+                backgroundColor: BACKGROUND_COLOR,
+                color: COLOR,
                 // marginRight: previewerBox ? 20 : null,
                 paddingLeft: previewerBox ? 40 : null,
               }}

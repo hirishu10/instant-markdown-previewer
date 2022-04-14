@@ -37,21 +37,19 @@ const updateVersionInMarkdown = (version) => {
   const versionData =
     version === "v1.0.0"
       ? `
-  ![https://github.com/hirishu10](https://raw.githubusercontent.com/hirishu10/my-assets/main/instantMarkdownPreviewer/instantmarkdownpreview.gif)
-# Release v1.0.0
+![https://github.com/hirishu10](https://raw.githubusercontent.com/hirishu10/my-assets/main/instantMarkdownPreviewer/instantmarkdownpreview.gif)
+# Release v1.0.0 🚀
 
-### Update
-- Improve bugs and fixes.
-- Fix the version selection issue.
+### ⚙️ Update
+- We are working for improving this.
 
-### Feature
-- Added new Button for deleting the editor data.
-- We are working for improving this with new feature.
+### 📚 Feature
+- We are working for adding new features.
 
 
-## Some Example
->  Below Some Exampels how to use Markdown Language 🙂
-# Welcome to my React Markdown Previewer!
+## Markdown Layout ↓
+>  Below Some layout of Markdown Language 🙂
+# Welcome To Instant Markdown Previewer!
 ## This is a sub-heading...
 ### And here's some other cool stuff:
 
@@ -98,20 +96,19 @@ And here. | Okay. | I think we get it.
       : version === "v1.0.1"
       ? `
 ![https://github.com/hirishu10](https://raw.githubusercontent.com/hirishu10/my-assets/main/instantMarkdownPreviewer/instantmarkdownpreview.gif)
-# Release v1.0.1
+# Release v1.0.1 🚀
 
-### Update
-- Improve bugs and fixes.
-- Fix the version selection issue.
+### ⚙️ Update
+- Improved bugs and fixes.
+- Fixed the version selection issue.
 
-### Feature
-- Added new Button for deleting the editor data.
-- We are working for improving this with new feature.
+### 📚 Feature
+- We are working for improving this with new features.
 
 
-## Some Example
->  Below Some Exampels how to use Markdown Language 🙂
-# Welcome to my React Markdown Previewer!
+## Markdown Layout ↓
+>  Below Some layout of Markdown Language 🙂
+# Welcome To Instant Markdown Previewer!
 ## This is a sub-heading...
 ### And here's some other cool stuff:
 
@@ -158,20 +155,19 @@ And here. | Okay. | I think we get it.
       : version === "v1.0.2"
       ? `
 ![https://github.com/hirishu10](https://raw.githubusercontent.com/hirishu10/my-assets/main/instantMarkdownPreviewer/instantmarkdownpreview.gif)
-# Release v1.0.2
+# Release v1.0.2 🚀
 
-### Update
-- Improve bugs and fixes.
-- Fix the version selection issue.
+### ⚙️ Update
+- Improved bugs and fixes.
+- Make page responsive for Tablet and fixed some design errors.
 
-### Feature
-- Added new Button for deleting the editor data.
-- We are working for improving this with new feature.
+### 📚 Feature
+- We are working for improving this with new features.
+- For mobile device we working.
 
-
-## Some Example
->  Below Some Exampels how to use Markdown Language 🙂
-# Welcome to my React Markdown Previewer!
+## Markdown Layout ↓
+>  Below Some layout of Markdown Language 🙂
+# Welcome To Instant Markdown Previewer!
 ## This is a sub-heading...
 ### And here's some other cool stuff:
 
@@ -217,20 +213,22 @@ And here. | Okay. | I think we get it.
 `
       : `
 ![https://github.com/hirishu10](https://raw.githubusercontent.com/hirishu10/my-assets/main/instantMarkdownPreviewer/instantmarkdownpreview.gif)
-# Release v1.0.3
+# Release v1.0.3 🚀
 
-### Update
-- Improve bugs and fixes.
-- Fix the version selection issue.
+### ⚙️ Update
+- Improved bugs and fixes.
+- Dark Mode / Light Mode Fixed.
+- Added new clear button.
+- Also Added Download button.
+- **Note:** Now you can test any text and download as .txt file and use in any markdwon supported editor.
 
-### Feature
-- Added new Button for deleting the editor data.
-- We are working for improving this with new feature.
+### 📚 Feature
+- We are working for improving this with new features.
 
 
-## Some Example
->  Below Some Exampels how to use Markdown Language 🙂
-# Welcome to my React Markdown Previewer!
+## Markdown Layout ↓
+>  Below Some layout of Markdown Language 🙂
+# Welcome To Instant Markdown Previewer!
 ## This is a sub-heading...
 ### And here's some other cool stuff:
 

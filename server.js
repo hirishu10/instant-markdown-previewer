@@ -7,6 +7,12 @@ const app = express();
 // for POST if we have body it will help to display | removing body-parser express have default now
 app.use(express.json());
 
+app.get("/data", (req, res) => {
+  res.json({
+    message: "working",
+  });
+});
+
 // Static Page for the Website
 if (process.env.NODE_ENV === "production") {
   //
@@ -18,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // --------------------
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
   console.log(`App listening on ${PORT}`);

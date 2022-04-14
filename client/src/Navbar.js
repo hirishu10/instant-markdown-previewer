@@ -6,7 +6,6 @@ import {
   faAngleDown,
   faAngleUp,
 } from "@fortawesome/free-solid-svg-icons";
-// import { faTwitter, faTumblr } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //
@@ -19,12 +18,13 @@ import {
   setVersionMode,
   updateVersionInMarkdown,
 } from "./redux/actions/index";
-function Navbar({ darkMode, darkModeEnabled }) {
+function Navbar() {
   const dispatch = useDispatch();
   const { isDarkMode, isVersionViewMode, versionUpdateViewer } = useSelector(
     (state) => state.actionCombined
   );
 
+  const [darkMode, setingDarkMode] = useState(false);
   const [getDropDown, setDropDown] = useState(false);
   const [index, setIndex] = useState(0);
   const hearts = ["❤️", "💙", "💜", "💚", "🖤", "💛", "🧡", "🤍", "🤎"];
@@ -45,6 +45,19 @@ function Navbar({ darkMode, darkModeEnabled }) {
   const updateVersionDataInTheMarkdownPreviewer = (v) => {
     dispatch(updateVersionInMarkdown(v));
   };
+
+  // This function helpful for enabling the dark mode
+  const darkModeEnabled = (e) => {
+    // console.log("isDarkMode :>> ", isDarkMode);
+    e.preventDefault();
+    dispatch(setDarkMode(!isDarkMode));
+    // $(".icon-design").addClass("animate__animated animate__flip");
+    $(".icon-design").addClass("animate__animated animate__bounceIn");
+    setTimeout(() => {
+      // $(".icon-design").removeClass("animate__animated animate__flip");
+      $(".icon-design").removeClass("animate__animated animate__bounceIn");
+    }, 800);
+  };
   //
   return (
     <div className="navbarContainer">
@@ -63,13 +76,13 @@ function Navbar({ darkMode, darkModeEnabled }) {
             }
             onMouseEnter={(e) => {
               e.preventDefault();
-              setDropDown(!getDropDown);
               e.currentTarget.style.transition = "0.3s";
+              setDropDown(true);
             }}
             onMouseLeave={(e) => {
               e.preventDefault();
-              setDropDown(!getDropDown);
               e.currentTarget.style.transition = "0.3s";
+              setDropDown(false);
             }}
           >
             {`v1.0.3`}
@@ -164,7 +177,7 @@ function Navbar({ darkMode, darkModeEnabled }) {
         <em className="icon-design" onClick={darkModeEnabled}>
           <FontAwesomeIcon
             className="sameForBothTwoButtonChild"
-            icon={darkMode ? faMoon : faSun}
+            icon={isDarkMode ? faMoon : faSun}
             size={"1x"}
             // color={"white"}
           />

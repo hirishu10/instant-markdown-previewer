@@ -9,22 +9,25 @@ const initialState = {
   isVersionViewMode: false,
   versionUpdateViewer: `
 ![https://github.com/hirishu10](https://raw.githubusercontent.com/hirishu10/my-assets/main/instantMarkdownPreviewer/instantmarkdownpreview.gif)
-# Release v1.0.3
+# Release v1.0.3 🚀
 
-### Update
-- Improve bugs and fixes.
-- Fix the version selection issue.
+### ⚙️ Update
+- Improved bugs and fixes.
+- Dark Mode / Light Mode Fixed.
+- Added new clear button.
+- Also Added Download button.
+- **Note:** Now you can test any text and download as .txt file and use in any markdwon supported editor.
 
-### Feature
-- Added new Button for deleting the editor data.
-- We are working for improving this with new feature.
+### 📚 Feature
+- We are working for improving this with new features.
 
 
-## Some Example
->  Below Some Exampels how to use Markdown Language 🙂
-# Welcome to my React Markdown Previewer!
+## Markdown Layout ↓
+>  Below Some layout of Markdown Language 🙂
+# Welcome To Instant Markdown Previewer!
 ## This is a sub-heading...
 ### And here's some other cool stuff:
+
 
 Here some code, \`<div></div>\`, between 2 backticks.
 
@@ -32,9 +35,9 @@ Here some code, \`<div></div>\`, between 2 backticks.
 // this is multi-line code:
 
 function anotherExample(firstLine, lastLine) {
-  if (firstLine == '\`\`\`' && lastLine == '\`\`\`') {
-    return multiLineCode;
-  }
+if (firstLine == '\`\`\`' && lastLine == '\`\`\`') {
+return multiLineCode;
+}
 }
 \`\`\`
 
@@ -64,7 +67,7 @@ And here. | Okay. | I think we get it.
 
 ![https://github.com/hirishu10](https://raw.githubusercontent.com/hirishu10/my-assets/main/rishuchowdharyanimate.gif)
 
-    `,
+`,
 };
 
 const actionCombined = (state = initialState, action) => {
