@@ -24,7 +24,6 @@ function Navbar() {
     (state) => state.actionCombined
   );
 
-  const [darkMode, setingDarkMode] = useState(false);
   const [getDropDown, setDropDown] = useState(false);
   const [index, setIndex] = useState(0);
   const hearts = ["❤️", "💙", "💜", "💚", "🖤", "💛", "🧡", "🤍", "🤎"];
@@ -37,7 +36,6 @@ function Navbar() {
     setTimeout(() => {
       let x = index >= hearts.length - 1 ? 0 : index + 1;
       setIndex(x);
-      // $("#heart").removeClass("animate__animated animate__heartBeat");
     }, 1000);
   }, [hearts.length, index]);
 
@@ -51,10 +49,8 @@ function Navbar() {
     // console.log("isDarkMode :>> ", isDarkMode);
     e.preventDefault();
     dispatch(setDarkMode(!isDarkMode));
-    // $(".icon-design").addClass("animate__animated animate__flip");
     $(".icon-design").addClass("animate__animated animate__bounceIn");
     setTimeout(() => {
-      // $(".icon-design").removeClass("animate__animated animate__flip");
       $(".icon-design").removeClass("animate__animated animate__bounceIn");
     }, 800);
   };
@@ -65,15 +61,7 @@ function Navbar() {
         <div className="navbarContainerZeroFirst">
           <button
             className="optionContainer"
-            // onClick={(e) => {
-            //   e.preventDefault();
-            //   setDropDown(!getDropDown);
-            // }}
-            style={
-              {
-                // marginTop: getDropDown ? 30 : null,
-              }
-            }
+            style={{}}
             onMouseEnter={(e) => {
               e.preventDefault();
               e.currentTarget.style.transition = "0.3s";
@@ -96,17 +84,9 @@ function Navbar() {
                 className="sameForBothTwoButtonChild"
                 icon={getDropDown ? faAngleUp : faAngleDown}
                 size={"1x"}
-                // color={"white"}
               />
             </em>
-            <div
-              className="optionDesign"
-              style={
-                {
-                  // display: getDropDown ? "block" : "none",
-                }
-              }
-            >
+            <div className="optionDesign" style={{}}>
               <ul className="options">
                 <li
                   className="optionsLayout"
@@ -179,7 +159,6 @@ function Navbar() {
             className="sameForBothTwoButtonChild"
             icon={isDarkMode ? faMoon : faSun}
             size={"1x"}
-            // color={"white"}
           />
         </em>
       </div>

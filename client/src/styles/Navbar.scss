@@ -14,11 +14,7 @@
   .navbarContainerZero {
     width: 20%;
     height: 100%;
-    // background-color: darkolivegreen;
     display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // padding-right: 150px;
 
     .navbarContainerZeroFirst {
       width: 30%;
@@ -43,7 +39,6 @@
           width: 85px;
           position: absolute;
           display: none;
-          // border: none;
           background-color: whitesmoke;
           margin: 16px 0 0 -5px;
           transition: 0.3s;
@@ -53,7 +48,6 @@
           padding: 0;
           position: relative;
           list-style: none;
-          // transition: 0.3s;
 
           .optionsLayout {
             width: 100%;
@@ -106,7 +100,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // padding-right: 150px;
     transition: 0.8s;
   }
   .navbarContainerTwo {

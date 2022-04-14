@@ -37,7 +37,6 @@ $default-border: 1px solid darken($backgroundBase, 35%);
   background-color: #333;
   color: white;
   display: flex;
-  // border-bottom: 1px solid black;
 
   .sameForBothOne {
     width: 80%;
@@ -166,9 +165,6 @@ $default-border: 1px solid darken($backgroundBase, 35%);
   width: 100%;
   height: 94%;
   background-color: #333;
-  //   display: flex;
-  //   justify-content: flex-start;
-  //   align-items: center;
   transition: 0.5s;
 
   #editor {
@@ -177,8 +173,6 @@ $default-border: 1px solid darken($backgroundBase, 35%);
   }
 
   .textArea {
-    // width: 100%;
-    // height: 100%;
     padding: 10px 5px 10px 10px;
   }
 }
@@ -203,21 +197,13 @@ $default-border: 1px solid darken($backgroundBase, 35%);
     // color: $hColors;
     border-bottom: 1px solid $borderBottomForPreview;
   }
-  h3 {
-    // color: $hColors;
-    // border-bottom: 2px solid $borderBottomForPreview;
-  }
-  h4 {
-    // color: $hColors;
-    // border-bottom: 2px solid $borderBottomForPreview;
-  }
-  h5 {
-    // color: $hColors;
-    // border-bottom: 1px solid $borderBottomForPreview;
-  }
+  // h3 {
+  // }
+  // h4 {
+  // }
+  // h5 {
+  // }
   h6 {
-    // color: #303842;
-    // border-bottom: 1px solid $borderBottomForPreview;
     font-size: 0.8em;
   }
 

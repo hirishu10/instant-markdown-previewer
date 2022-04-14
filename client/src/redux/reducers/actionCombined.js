@@ -20,7 +20,7 @@ const initialState = {
 
 ### 📚 Feature
 - We are working for improving this with new features.
-
+- For mobile devices we are working.
 
 ## Markdown Layout ↓
 >  Below Some layout of Markdown Language 🙂

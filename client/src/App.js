@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./styles/App.scss";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -11,16 +10,12 @@ import {
   faExpandAlt,
   faExpand,
   faTrashCan,
-  faDownload,
   faFileDownload,
 } from "@fortawesome/free-solid-svg-icons";
-import { faTwitter, faTumblr } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
-// import { useEffect, useState } from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
+//
 import $ from "jquery";
-// import "animate.css";
 import hljs from "highlight.js";
 // import "highlight.js/styles/github.css";
 // import "highlight.js/styles/googlecode.css";
@@ -50,7 +45,6 @@ function App() {
 
   const predefinedData = versionUpdateViewer;
   const [editorData, setEditorData] = useState(predefinedData);
-  // const [previewData, setPreviewData] = useState("");
 
   const editorFullScreen = (e) => {
     e.preventDefault();
@@ -63,7 +57,7 @@ function App() {
     setPreviewerBox(!previewerBox);
   };
 
-  //
+  // Important in future update
   // marked.setOptions({
   //   breaks: true,
   //   highlight: function (code) {
@@ -75,14 +69,9 @@ function App() {
   marked.setOptions({
     renderer: new marked.Renderer(),
     highlight: function (code, lang) {
-      // const hljs = require("highlight.js");
-
       const language = hljs.getLanguage(lang) ? lang : "plaintext";
       return hljs.highlight(code, { language }).value;
     },
-    // highlight: function (code) {
-    //   return Prism.highlight(code, Prism.languages.javascript, "javascript");
-    // },
     langPrefix: "hljs language-", // highlight.js css expects a top-level 'hljs' class.
     pedantic: false,
     gfm: true,
@@ -98,11 +87,9 @@ function App() {
   const COLOR = isDarkMode ? "#c8d1da" : "#232930";
   const LANGUAGE_BACKGROUND_COLOR = isDarkMode ? "#151b23" : "#333943";
   const P_CODE_BACKGROUND_COLOR = isDarkMode ? "#333943" : "#e8ebef";
+  //
   $("pre").css("background-color", LANGUAGE_BACKGROUND_COLOR);
-  // $("pre code").css("background-color", LANGUAGE_BACKGROUND_COLOR);
-
   $("p code").css("background-color", P_CODE_BACKGROUND_COLOR);
-
   //
   useEffect(() => {
     // console.log("isVersionViewMode :>> ", isVersionViewMode);
@@ -110,12 +97,8 @@ function App() {
     const markdownData = marked.parse(
       isVersionViewMode ? versionUpdateViewer : editorData
     );
-    // const markdownData = marked.parse(versionUpdateViewer);
-    // $(".language-java").addClass("hljs language-java");
     document.getElementById("preview").innerHTML = markdownData;
     $("pre").css("background-color", LANGUAGE_BACKGROUND_COLOR);
-    // $("pre code").css("background-color", LANGUAGE_BACKGROUND_COLOR);
-
     $("p code").css("background-color", P_CODE_BACKGROUND_COLOR);
   }, [
     LANGUAGE_BACKGROUND_COLOR,
@@ -135,12 +118,9 @@ function App() {
             display: previewerBox ? "none" : "block",
             width: editorBox ? "100%" : "50%",
             height: "100%",
-            // backgroundColor: "orange",
-            // borderRight: "1px solid silver",
           }}
         >
           <div className="sameForBoth">
-            {/* <div className="sameForBothOne"></div> */}
             <div className="sameForBothOne">
               <div className="sameForBothOneFirst">#Editor</div>
               <div className="sameForBothOneSecond">
@@ -172,7 +152,6 @@ function App() {
                       className="sameForBothTwoButtonChild"
                       icon={faTrashCan}
                       size={"sm"}
-                      // color={"white"}
                     />
                   </button>
                 </div>
@@ -212,7 +191,6 @@ function App() {
                       className="sameForBothTwoButtonChild"
                       icon={faFileDownload}
                       size={"sm"}
-                      // color={"white"}
                     />
                   </button>
                 </div>
@@ -227,7 +205,6 @@ function App() {
                   className="sameForBothTwoButtonChild"
                   icon={editorBox ? faExpandAlt : faExpand}
                   size={"1x"}
-                  // color={"white"}
                 />
               </button>
             </div>
@@ -242,7 +219,6 @@ function App() {
             }}
           >
             <textarea
-              // disabled={true}
               className="textArea"
               id="editor"
               style={{
@@ -254,11 +230,7 @@ function App() {
                 overflowX: "hidden",
                 overflowY: "scroll",
                 outlineStyle: "none",
-                // padding: 10,
                 wordBreak: "break-word",
-                // display: "flex",
-                // justifyContent: "center",
-                // alignItems: "flex-end",
                 backgroundColor: BACKGROUND_COLOR,
                 color: COLOR,
 
@@ -288,7 +260,6 @@ function App() {
             display: editorBox ? "none" : "block",
             width: previewerBox ? "100%" : "50%",
             height: "100%",
-            // backgroundColor: "orangered",
             borderLeft: "1px solid silver",
           }}
         >
@@ -303,7 +274,6 @@ function App() {
                   className="sameForBothTwoButtonChild"
                   icon={previewerBox ? faExpandAlt : faExpand}
                   size={"1x"}
-                  // color={"white"}
                 />
               </button>
             </div>
@@ -318,7 +288,6 @@ function App() {
             }}
           >
             <div
-              // disabled={true}
               className="textArea"
               id="preview"
               style={{
@@ -328,20 +297,12 @@ function App() {
                 maxHeight: previewerBox ? "96%" : "96.5%",
                 overflowX: "hidden",
                 overflowY: "scroll",
-                // padding: 10,
                 wordBreak: "break-word",
                 border: "none",
-                // backgroundColor: "white",
                 backgroundColor: BACKGROUND_COLOR,
                 color: COLOR,
-                // marginRight: previewerBox ? 20 : null,
                 paddingLeft: previewerBox ? 40 : null,
               }}
-              // value={previewData}
-              // onChange={(e) => {
-              //   e.preventDefault();
-              //   setPreviewData(e.target.value);
-              // }}
             ></div>
           </div>
         </div>

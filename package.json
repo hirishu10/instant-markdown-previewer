@@ -1,7 +1,7 @@
 {
   "name": "instant-markdown-previewer",
-  "version": "1.0.3-Beta",
-  "description": "",
+  "version": "1.0.3",
+  "description": "simple but instantly available preview for markdown language. We are also working for improving this for now enjoy thank you",
   "main": "server.js",
   "engines": {
     "node": "16.x"
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "''"
+    "url": "git+https://github.com/hirishu10/instant-markdown-previewer.git"
   },
   "author": "Rishu Chowdhary <hi.10rishu@gmail.com>",
   "license": "MIT",
@@ -27,5 +27,18 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "keywords": [
+    "markdown",
+    "instant-markdown",
+    "markdown-language",
+    "download-markdown",
+    "txt",
+    "file",
+    "markdown-editor"
+  ],
+  "bugs": {
+    "url": "https://github.com/hirishu10/instant-markdown-previewer/issues"
+  },
+  "homepage": "https://github.com/hirishu10/instant-markdown-previewer#readme"
 }

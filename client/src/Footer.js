@@ -1,11 +1,7 @@
 import React from "react";
 import "./styles/Footer.scss";
 //
-import {
-  faExpandAlt,
-  faExpand,
-  faArrowUpRightFromSquare,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
   faTumblr,
@@ -49,16 +45,11 @@ function Footer() {
             rel="noreferrer"
           >
             <img
-              // className="logoImage"
               src="https://raw.githubusercontent.com/hirishu10/my-assets/main/contact_logo.png"
               alt="my_logo"
               width={"100px"}
               height={"100px"}
-              style={
-                {
-                  // marginLeft: 80,
-                }
-              }
+              style={{}}
             />
           </a>
         </div>
@@ -81,12 +72,7 @@ function Footer() {
                     e.currentTarget.style.transition = "0.3s";
                   }}
                 >
-                  <FontAwesomeIcon
-                    className=""
-                    icon={item?.icon}
-                    size={"lg"}
-                    // color={"white"}
-                  />
+                  <FontAwesomeIcon className="" icon={item?.icon} size={"lg"} />
                 </a>
               ))}
             </div>
